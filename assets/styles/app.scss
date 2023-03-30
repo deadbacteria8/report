@@ -1,0 +1,30 @@
+@import 'nav';
+@import 'footer';
+@import 'box';
+
+body {
+    background-color: rgb(164, 155, 155);
+    margin: 0;
+}
+
+.site-header {
+    background-size: cover;
+    height: 100px;
+    position: relative;
+}
+
+
+.content {
+    position: relative;
+    min-height: 70vh;
+}
+
+h1 {
+    margin: 0;
+}
+
+.git {
+    height: 90%;
+    margin: 0.5rem;
+    float: left;
+}

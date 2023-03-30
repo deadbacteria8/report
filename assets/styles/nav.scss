@@ -1,0 +1,21 @@
+nav li {
+    display: inline-block;
+}
+
+nav {
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+}
+
+nav a {
+    text-decoration: none;
+    color: rgb(202, 179, 179);
+    padding: 1rem;
+}
+
+nav ul {
+    padding: 0;
+}
