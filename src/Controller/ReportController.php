@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ReportController extends AbstractController
 {
-    #[Route("/redovisa", name: "report")]
+    #[Route("/report", name: "report")]
     public function redovisa(): Response
     {
         return $this->render('report.html.twig');

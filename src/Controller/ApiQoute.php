@@ -20,10 +20,13 @@ class ApiQoute
         $randomIndex = rand(0, 2);
         $randomQuote = $quotes[$randomIndex];
 
+        date_default_timezone_set('Europe/Stockholm');
+        $current_time = time();
+        $formatted_time = date('h:i:s A', $current_time);
         $data = [
             'quote' => $randomQuote,
             'datum' => date('Y-m-d'),
-            'tid' => time()
+            'tid' => $formatted_time
         ];
 
         return new JsonResponse($data);
