@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+<div class="container1">
+  <h2>Cards</h2>
+  <a href="{{ path('deck') }}">Deck</a>
+  <a href="{{ path('shuffle') }}">Shuffle</a>
+  <a href="{{ path('draw') }}">Draw</a>
+  {% if app.request.attributes.get('_route') == 'card' %}
+    <div class="card_box">
+      <img src="{{ asset('img/uml.png') }}" alt="">
+      <p>Klassen Card har attributen value, suit och rank. Value är värdet suit är kortfärg och rank är vilket kort det är. Sedan finns det simpla get metoder för att ta fram attributen eftersom dem är privata. Deck har endast en attribut som är en array. I konstruktorn så fylls arrayen med instanser från Card klassen. Jag gör en for loop som går igenom varje kortfärg och rank för att sen skapa instanser och lägga till dem i deck attributet. Jag lägger till varje instans med add metoden som jag kallar på i konstruktorn. ToList returnerar en array med en lista på alla kort, pullCard tar fram kort och arrayLength returnerar längden på deck attributet. </p>
+    </div>
+  {% endif %}
+  {% block div %}{% endblock %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,11 @@
+{% extends "card.html.twig" %}
+{% block div %}
+<h1>Sorted deck</h1>
+<div class="cardcontainer">
+{% for card in list1 %}
+  <div class="card">
+    <p {% if card ends with '♥' or card ends with '♦' %}class="red"{% endif %}>{{ card }}</p>
+  </div>
+{% endfor %}
+</div>
+{% endblock %}

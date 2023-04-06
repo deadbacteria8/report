@@ -1,0 +1,8 @@
+{% extends "api.html.twig" %}
+{% block div %}
+
+<form action="{{ path('api_deck_post') }}" method="POST" class="form">
+    <button type="submit">Shuffle</button>
+</form>
+{% endblock %}
+

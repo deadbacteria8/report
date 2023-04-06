@@ -1,0 +1,8 @@
+{% extends "api.html.twig" %}
+{% block div %}
+<form action="{{ path('apidraw_post') }}" method="POST" class="form">
+<input type="number" name="value" min="1" max="52">
+    <button type="submit">Draw</button>
+</form>
+{% endblock %}
+
