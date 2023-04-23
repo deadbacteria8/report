@@ -4,11 +4,19 @@ namespace App\Cards;
 
 class Card
 {
-    protected $value;
-    protected $suit;
-    protected $rank;
+    /**
+     * @var int[]
+     */
+    protected array $value;
+    protected string $suit;
+    protected string $rank;
 
-    public function __construct($value, $suit, $rank)
+    /**
+     * @param int[] $value
+     * @param string $suit
+     * @param string $rank
+     */
+    public function __construct(array $value, string $suit, string $rank)
     {
         $this->value = $value;
         $this->suit = $suit;
@@ -25,7 +33,10 @@ class Card
         return $this->suit;
     }
 
-    public function getValue(): int
+    /**
+     * @return int[] $value
+     */
+    public function getValue(): array
     {
         return $this->value;
     }

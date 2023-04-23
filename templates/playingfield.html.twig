@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<div class="playcontainer">
+<div class="playfield">
+<form method="POST" action="{{ path('playingfield_post') }}">
+  <input class="startButton" type="submit" name="action" value="Start"></button>
+</form>
+<div class="players">
+{% for i in range(1, spelare|length ) %}
+  <div class="player">
+  <form method="POST" action="{{ path('playingfield_post') }}">
+  <input type="hidden" name="player" value="{{ i }}">
+  <input type="number" class="bet" name="value" min="1" max="{{ pengar[i-1] }}">
+  <button type="submit">Bet</button>
+  </form>
+  <p>Pengar: {{ pengar[i-1] }}</p>
+  </div>
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}

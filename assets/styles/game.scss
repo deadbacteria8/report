@@ -1,0 +1,46 @@
+
+
+.playcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playfield {
+    width: 90%;
+    background-color: green;
+    height: 35rem;
+    padding: 1rem;
+    position: relative;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    border: 3px solid black;
+}
+
+.players {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.player {
+    background-color: rgb(170, 169, 169);
+    margin: 1rem;
+    justify-content: center;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 0.2rem;
+    width: 7rem;
+}
+
+.bank {
+    margin: 0;
+}
+
+.bet {
+    max-width: 4rem;
+}

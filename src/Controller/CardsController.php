@@ -59,6 +59,7 @@ class CardsController extends AbstractController
                 "list1" => $toList,
                 "count" => $count,
             ];
+            print_r(memory_get_usage());
             return $this->render('draw.html.twig', $data);
         }
 

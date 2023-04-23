@@ -22,7 +22,13 @@
     <p>Mitt TIL detta kmom är att jobba med klasser i php</p>
     <hr>
     <h2 id="kmom03">kmom03</h2>
-    <p></p>
+    <h3>Berätta hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation?</h3>
+    <p>Det kändes helt okej att modelera med psuedokod och flödesdiagram. Jag är inte alltid ett jätte stort fan utav det och brukar oftast känna att jag hittar mina lösningar genom att koda mig fram steg för steg. Ibland så kan jag dock skriva ner anteckningar vad jag ska göra i programmet så jag inte glömmer bort det vilket jag gjorde nu.</p>
+    <h3>Berätta hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation?</h3>
+    <p>I uppgiften så valde jag att ha en spelklass, en klass för alla spelare och en köklass. Spelklassen får spelet att rulla och retuernerar information som jag tar fram i kontrollern, t.ex. om spelrundan är över eller om det är bankens tur att spela. I spelklassen har jag också en array med alla spelare-instanser. Det som var lite trixigt var att få till så att kön inte har en koppling till arrayen med alla spelare utan kön ändrar attribut på spelarinstanserna. Jag gjorde på detta settet eftersom jag inte ville att kön skulle kunna påverka ordningen i spelararrayen. För i spelararrayen så hade jag varje spelarobjekt i ordning och om jag dequeuar och enqueuar den så kommer utskriften på twig-sidan förändras. Det blev svårare än jag trodde att göra så att spelet är möjligt till att ha så många spelare som helst. Just nu är max-antalet 5 för att det inte ska bli för mycket på skärmen. Själva json utskriften blev inte så snygg eftersom jag behövde skriva ut statistik för alla spelare. Hade nog varit snyggare om det bara var en spelare som spela.</p>
+    <h3>Vilken är din känsla för att koda i ett ramverk som Symfony, så här långt in i kursen?</h3>
+    <p>Jag tycker symfony känns helt okej. Det ända som är riktigt störande är att man inte kan jobba mot objekt i twig filerna utan att man behöver jobba mot arrayer hela tiden. Det blir mycket fulare tycker jag.</p>
+    <p>Mitt TIL är bland annat att jobba med ternary operators</p>
     <hr>
     <h2 id="kmom04">kmom04</h2>
     <p></p>

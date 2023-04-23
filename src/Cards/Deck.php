@@ -6,7 +6,10 @@ use App\Cards\Deck;
 
 class Deck
 {
-    private $deck = [];
+    /**
+     * @var Card[]
+     */
+    public array $deck = [];
 
     public function __construct()
     {
@@ -15,14 +18,7 @@ class Deck
 
         foreach ($suits as $suit) {
             foreach ($ranks as $rank) {
-                $value = 0;
-                if ($rank === "J" || $rank === "Q" || $rank === "K") {
-                    $value = 10;
-                } elseif ($rank === "A") {
-                    $value = 11;
-                } else {
-                    $value = intval($rank);
-                }
+                $value = ($rank === "J" || $rank === "Q" || $rank === "K") ? [10] : ($rank === "A" ? [1, 11] : [intval($rank)]);
                 $card = new Card($value, $suit, $rank);
                 $this->add($card);
             }
@@ -34,7 +30,11 @@ class Deck
         $this->deck[] = $card;
     }
 
-    public function toList($deck): array
+    /**
+     * @param Card[] $deck
+     * @return string[]
+     */
+    public function toList(array $deck): array
     {
         $cards = [];
 
@@ -45,12 +45,19 @@ class Deck
         return $cards;
     }
 
+    /**
+     * @return Card[]
+     */
     public function getDeck(): array
     {
         return $this->deck;
     }
 
-    public function pullCard($num): array
+    /**
+     * @param int $num
+     * @return Card[]
+     */
+    public function pullCard(int $num): array
     {
         $deck = $this->deck;
         $rand = array_rand($deck, $num);

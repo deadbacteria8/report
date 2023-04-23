@@ -9,6 +9,7 @@
    <a href="{{ path('apideck') }}">Deck</a>
    <a href="{{ path('apideck_get') }}">Shuffle</a>
    <a href="{{ path('apidraw') }}">Draw</a>
+   <a href="{{ path('apigame') }}">Game</a>
      {% if app.request.attributes.get('_route') == 'api' %}
         <div class="card_box">
       <p>Qoute skriver ut 3 qoutes i JSON-format. Deck skriver ut deck i json-format. Shuffle har en get route och en post route. När man klickar på knappen så postas man till en route som skriver ut den shufflade kortleken i json-format. För draw så har jag en genensam GET när man klickar på knappen så tas man till en post route. Om man inte skriver ut något värde så dras bara 1 kort.</p>

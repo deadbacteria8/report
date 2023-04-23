@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+<div class="container1">
+    <div class="card_box">
+      <h3>Flödesschema</h3>
+      <img src="{{ asset('img/blackjack.png') }}" alt="">
+      <h3>Psuedokod och anteckningar:</h3>
+      <br>
+      <h4>Detta är för min metod att hantera poäng, eftersom ett ess kan vara 11 eller 2 poäng:</h4>
+      <p>för varje kort, lägg till värde till poängen, om kort är ace, lägg till poäng 1. sedan efter alla kort är räknade, kolla om du kan göra om acekortets värde till 11. </p>
+      <h4>Spelaren tar ett kort/stannar:</h4>
+      <p>Hämta värde från form som postats. I formen så ska det finnas spelarnummer så att jag vet för vilken spelare som det gäller. När spelaren tar ett kort så ska det kollas att det finns tillräckligt med kort i kortleken, annars så skapas en ny deck klass.</p>
+      <h4>För min kö:</h4>
+      <p>Kön ska inte röra om i arrayen med alla spelare utan kön ska ändra status på spelarobjektens attribut queueSpot och havePlayed.ta ut temporär queue-spot vilket är platsen i kön som spelaren har varit på.
+      Ställ spelaren längst bak i kön och ändra havePlayed till true.
+      ändra queue-spot på de spelarobjekt som står mellan den temporära queue-spotten och uppåt. spelarna går ner i kön med -1, om queue-spot attributet är 1 så är det deras tur. När alla spelarobjekt har attributet havePlayed till true så är det bankens tur att spela. När banken har spelat så är omgången över. Om spelaren väljer att starta ny runda så ska start funktionen anropas. I start funktionen ska en ny kö skapas och attributen som behövs nollställas för varje spelarobjekt ska bli nollställda.</p>
+      <h3>Klasser och funktionalitet som behövs för spelet</h3>
+      <p>Det ska finnas möjlighet att spela hur många spelare som möjligt. En spelar klass ska finnas och en game klass ska finnas. Deck klassen och kort klassen ska också användas. Det ska också finnas en kö klass som används för att tala om vems tur det är att spela.</p>
+    </div>
+  {% block div %}{% endblock %}
+</div>
+{% endblock %}
+

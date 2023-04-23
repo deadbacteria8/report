@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+<div class="container1">
+    <div class="card_box">
+      <a href="{{ path('start') }}">Start BlackJack</a>
+      <p>Spelet är blackjack, banken drar kort tills den har 17 eller mer. Spela upp till 5 spelare. Vid blackjack vinst så vinner du 3/2 av din insats. Om du och banken har lika mycket poäng så får du tillbaka din insats. När spelet är färdigt kan du spela igen med samma spelare. Om du vill börja om från början så får du gå <a href="{{ path('start') }}">hit</a>.Du behöver inte lägga en insats för att spela.</p>
+    <a href="{{ path('doc') }}">Dokumentation</a></div>
+  {% block div %}{% endblock %}
+</div>
+{% endblock %}
+

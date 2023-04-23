@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<div class="playcontainer">
+<div class="playfield">
+  {% if gamePlaying is same as(false) %}
+  <div class="playAgain">
+   <a href="{{ path('playingfield_get') }}">Play again</a>
+   </div>
+{% endif %}
+  {% set count = 1 %}
+  <div class="player">
+  <h3 class="bank">BANK</h3>
+  {% for card in bank_cards %}
+    <div class="card">
+    {% if count != 2 or playersDone is same as(true) %}
+      <p {% if card ends with '♥' or card ends with '♦' %}class="red"{% endif %}>{{ card }}</p>
+      {% endif %}
+    </div>
+    {% set count = count + 1 %}
+  {% endfor %}
+  </div>
+<div class="players">
+{% for i in range(0, spelare|length - 1) %}
+  <div class="player">
+  <p>{{ spelare[i]["Points-Array"][0] }}{% if spelare[i]["Points-Array"][1] is defined %}/{{ spelare[i]["Points-Array"][1] }}{% endif %}</p>
+
+  <p>{{ spelare[i]["Player-Message"] }} </p>
+  {% for card in spelare[i]["cards"] %}
+    <div class="card">
+    <p {% if card ends with '♥' or card ends with '♦' %}class="red"{% endif %}>{{ card }}</p>
+    </div>
+{% endfor %}
+{% if spelare[i]["Queue-Spot"] == 1 and playersDone is same as(false) %}
+<form method="POST" action="{{ path('gamePost') }}">
+  <input type="hidden" name="count" value="{{ i + 1 }}">
+  <input type="submit" name="value" value="PullCard">
+  <input type="submit" name="value" value="Stay">
+</form>
+{% endif %}
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}

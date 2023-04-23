@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use App\Cards\Game;
 use App\Cards\Deck;
 
 class Api extends AbstractController
@@ -26,12 +26,12 @@ class Api extends AbstractController
         $randomQuote = $quotes[$randomIndex];
 
         date_default_timezone_set('Europe/Stockholm');
-        $current_time = time();
-        $formatted_time = date('h:i:s A', $current_time);
+        $currentTime = time();
+        $formattedTime = date('h:i:s A', $currentTime);
         $data = [
             'quote' => $randomQuote,
             'datum' => date('Y-m-d'),
-            'tid' => $formatted_time
+            'tid' => $formattedTime
         ];
 
         return new JsonResponse($data);
@@ -75,7 +75,7 @@ class Api extends AbstractController
     }
 
     #[Route("/api/deck/draw", name: "apidraw", methods: ['GET'])]
-    public function apidraw(SessionInterface $session): Response
+    public function apidraw(): Response
     {
         return $this->render('apidraw.html.twig');
     }
@@ -95,6 +95,18 @@ class Api extends AbstractController
         $data = [
             "drawed" => $toList,
             "count" => $count,
+        ];
+        return new JsonResponse($data);
+    }
+
+    #[Route("/api/game", name: "apigame")]
+    public function game(SessionInterface $session): Response
+    {
+        $game = $session->get('bl', new Game(1));
+        $data = [
+            "GameCurrentlyPlaying" => $game->gamePlaying,
+            "BankCards" => $game->toList($game->bankPlayer->cards),
+            "Players" => $game->allPlayers()
         ];
         return new JsonResponse($data);
     }
