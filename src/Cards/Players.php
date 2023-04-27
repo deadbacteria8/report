@@ -20,5 +20,8 @@ class Players
         $this->cards = [];
         $this->currentBet = 0;
         $this->queueSpot = 0;
+        $this->havePlayed = false;
+        $this->message = "";
+        $this->points = 0;
     }
 }

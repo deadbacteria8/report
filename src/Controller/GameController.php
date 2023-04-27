@@ -36,20 +36,19 @@ class GameController extends AbstractController
         $value = $request->request->get('value');
         $gameClass = new Game(intval($value));
         $session->clear();
-        $session->set('bl', $gameClass);
+        $session->set('bl1', $gameClass);
         return $this->redirectToRoute('playingfield_get');
     }
 
     #[Route("/game/playingfield", name: "playingfield_get", methods:['GET'])]
     public function playingFieldGet(SessionInterface $session): Response
     {
-        $gameClass = $session->get('bl', "notFound");
+        $gameClass = $session->get('bl1', "notFound");
         if ($gameClass == "notFound") {
             return $this->redirectToRoute('start');
         }
         $data = [
-            "spelare" => $gameClass->players,
-            "pengar" => $gameClass->getMoney()
+            "spelare" => $gameClass->allPlayers()
         ];
         return $this->render('playingfield.html.twig', $data);
     }
@@ -57,7 +56,7 @@ class GameController extends AbstractController
     #[Route("/game/playingfield", name: "playingfield_post", methods:['POST'])]
     public function playingFieldPost(Request $request, SessionInterface $session): Response
     {
-        $gameClass = $session->get('bl');
+        $gameClass = $session->get('bl1');
         $action = $request->request->get('action');
         if ($action == "Start") {
             $gameClass->start();
@@ -72,7 +71,7 @@ class GameController extends AbstractController
     #[Route("/game/game", name: "game_get", methods:['GET'])]
     public function game(SessionInterface $session): Response
     {
-        $gameClass = $session->get('bl', "notFound");
+        $gameClass = $session->get('bl1', "notFound");
         if ($gameClass == "notFound") {
             return $this->redirectToRoute('start');
         }
@@ -83,7 +82,7 @@ class GameController extends AbstractController
             "playersDone" => $gameClass->playersDone,
             "gamePlaying" =>$gameClass->gamePlaying
         ];
-        $session->set('bl', $gameClass);
+        $session->set('bl1', $gameClass);
         return $this->render('game.html.twig', $data);
     }
 
@@ -92,9 +91,9 @@ class GameController extends AbstractController
     {
         $player = $request->request->get('count');
         $choice = $request->request->get('value');
-        $gameClass = $session->get('bl');
+        $gameClass = $session->get('bl1');
         $gameClass->makeAction(intval($player), $choice);
-        $session->set('bl', $gameClass);
+        $session->set('bl1', $gameClass);
         return $this->redirectToRoute('game_get');
     }
 }

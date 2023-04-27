@@ -29,9 +29,6 @@ class Queue
         foreach ($playerArray as $player) {
             $returnArray[] = [$player->havePlayed,$player->queueSpot];
         }
-        usort($returnArray, function ($first, $second) {
-            return $first[1] <=> $second[1];
-        });
         return $returnArray;
     }
     /**

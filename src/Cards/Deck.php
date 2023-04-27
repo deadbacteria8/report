@@ -20,14 +20,9 @@ class Deck
             foreach ($ranks as $rank) {
                 $value = ($rank === "J" || $rank === "Q" || $rank === "K") ? [10] : ($rank === "A" ? [1, 11] : [intval($rank)]);
                 $card = new Card($value, $suit, $rank);
-                $this->add($card);
+                $this->deck[] = $card;
             }
         }
-    }
-
-    public function add(Card $card): void
-    {
-        $this->deck[] = $card;
     }
 
     /**
@@ -43,14 +38,6 @@ class Deck
         }
 
         return $cards;
-    }
-
-    /**
-     * @return Card[]
-     */
-    public function getDeck(): array
-    {
-        return $this->deck;
     }
 
     /**

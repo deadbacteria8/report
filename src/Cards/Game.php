@@ -19,6 +19,11 @@ class Game
     public bool $gamePlaying;
     public Queue $queue;
 
+
+    /**
+     * @param int @playerAmount
+     * Creates gameclass with Players instances.
+     */
     public function __construct(int $playerAmount)
     {
         $this->gamePlaying = false;
@@ -34,25 +39,32 @@ class Game
         unset($playerArray[0]);
         $this->players = $playerArray;
         $this->queue = new Queue();
-    }
-
-    public function start(): void
-    {
-        if ($this->gamePlaying != false) {
-            return;
-        }
-        $amount = count($this->players);
-        $this->queue->createQueue($this->players);
-        for ($i = 1; $i <= $amount; $i++) {
-            $this->resetValues($this->players[$i]);
-            $this->draw($this->players[$i], 2);
-        }
-        $this->resetValues($this->bankPlayer);
-        $this->draw($this->bankPlayer, 2);
-        $this->gamePlaying = true;
         $this->playersDone = false;
     }
 
+    /**
+     * starting function. Starting the game with calling other methods such as createQueue, resetValues and draw.
+     */
+    public function start(): void
+    {
+        if ($this->gamePlaying == false) {
+            $amount = count($this->players);
+            $this->queue->createQueue($this->players);
+            $this->gamePlaying = true;
+            $this->playersDone = false;
+            for ($i = 1; $i <= $amount; $i++) {
+                $this->resetValues($this->players[$i]);
+                $this->draw($this->players[$i], 2);
+            }
+            $this->resetValues($this->bankPlayer);
+            $this->draw($this->bankPlayer, 2);
+        }
+    }
+
+    /**
+     * @param Players $player
+     * resets values for $player.
+     */
     private function resetValues(Players $player): void
     {
         $player->points = 0;
@@ -61,17 +73,10 @@ class Game
     }
 
     /**
-     * @return int[]
+     * @param int $player
+     * @param int $value
+     *  places bet for chosen player. bet function is called in the GameController with $player value retrieved from html-form-request.
      */
-    public function getMoney(): array
-    {
-        $returnArray = array();
-        foreach ($this->players as $player) {
-            $returnArray[] = $player->balance;
-        }
-        return $returnArray;
-    }
-
     public function bet(int $player, int $value): void
     {
         $currentPlayer = $this->players[$player];
@@ -79,6 +84,11 @@ class Game
         $currentPlayer->currentBet = $value;
     }
 
+    /**
+     * @param Players $player
+     * @param int $howMany
+     *  function draws card depending on the value of $howMany. Then it adds the points to $player and checks if the player has blackjack or has busted.
+     */
     private function draw(Players $player, int $howMany): void
     {
         $this->newDeck($howMany);
@@ -86,13 +96,18 @@ class Game
             $pulledCard = $this->deck->pullCard(1);
             $player->cards[] = $pulledCard;
         }
-        $points = $this->getPoints($player);
-        if ($points >= 21 && $player != $this->bankPlayer) {
-            $player->message = ($points == 21) ? "BlackJack" : "Busted";
+        $this->addPoints($player);
+        if ($player->points >= 21 && $player != $this->bankPlayer) {
+            $player->message = ($player->points == 21) ? "BlackJack" : "Busted";
             $this->queue->changeQueuePositions($player, $this->players);
+            $this->gameEnd();
         }
     }
 
+    /**
+     * @param int $num
+     * checks if the array has enough cards left, if not, a new deck will be created and shuffled
+     */
     private function newDeck(int $num): void
     {
         if ($num > $this->deck->arraylength()) {
@@ -101,6 +116,10 @@ class Game
         }
     }
 
+    /**
+     * gathering all the values for each players and returns it as an array.
+     * @return array[][]
+     */
     public function allPlayers(): array
     {
         $returnArray = [];
@@ -110,12 +129,14 @@ class Game
                 "cards" => $this->toList($player->cards),
                 "Queue-Spot" => $player->queueSpot,
                 "Points-Array" => $this->getPointsArray($player),
+                "Money" => $player->balance,
                 "Player-Message" => $player->message];
         }
         return $returnArray;
     }
 
     /**
+     * @param Card[][] $cardsArray An array of arrays containing Card objects.
      * @return string[]
      */
     public function toList(array $cardsArray): array
@@ -130,7 +151,9 @@ class Game
         return $cards;
     }
 
-
+    /**
+     * Calling getQueue method to determine if all players have played, if so the bankPlayer will draw cards and then the result() method is called.
+     */
     private function gameEnd(): void
     {
         $queue = $this->queue->getQueue($this->players);
@@ -139,7 +162,7 @@ class Game
             $this->playersDone = true;
         }
         if ($this->playersDone == true) {
-            while($this->getPoints($this->bankPlayer) < 17) {
+            while($this->bankPlayer->points < 17) {
                 $this->draw($this->bankPlayer, 1);
             }
             $this->result();
@@ -147,13 +170,16 @@ class Game
         }
     }
 
+    /**
+     * result function retrieves bankplayer points and compares it to all the player points to determine if the players balance should be increased depending on the result and bet made.
+     */
     private function result(): void
     {
-        $bankPoints = $this->getPoints($this->bankPlayer);
+        $bankPoints = $this->bankPlayer->points;
         $amount = count($this->players);
         for ($i = 1; $i <= $amount; $i++) {
             $currentPlayer = $this->players[$i];
-            $playerPoints = $this->getPoints($currentPlayer);
+            $playerPoints = $currentPlayer->points;
             switch (true) {
                 case ($playerPoints == $bankPoints && $playerPoints < 22):
                     $currentPlayer->message = "Pushed";
@@ -175,6 +201,11 @@ class Game
         }
     }
 
+    /**
+     * @param int $player
+     * @param string $choice
+     * method makes action for chosen player. The method is called in the gamecontroller with the value of the submitted html-form(player-number).
+     */
     public function makeAction(int $player, string $choice): void
     {
         if ($choice == "PullCard") {
@@ -182,12 +213,13 @@ class Game
         }
         if ($choice == "Stay") {
             $this->queue->changeQueuePositions($this->players[$player], $this->players);
+            $this->gameEnd();
         }
-        $this->gameEnd();
     }
 
     /**
      * @return int[]
+     * method returns array with possible point-outcomes. This method is crucial because Ace can be two different values.
      */
     public function getPointsArray(Players $player): array
     {
@@ -210,12 +242,12 @@ class Game
     }
 
     /**
-     * @return int
+     * @param Players $player
+     * method updates the player-score with the highest possible value.
      */
-    public function getPoints(Players $player)
+    public function addPoints(Players $player): void
     {
         $points = $this->getPointsArray($player);
         $player->points = $points[0];
-        return $player->points;
     }
 }

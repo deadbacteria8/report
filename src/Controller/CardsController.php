@@ -22,7 +22,7 @@ class CardsController extends AbstractController
     public function deck(SessionInterface $session): Response
     {
         $deckClass = $session->get('deck', new Deck());
-        $deck = $deckClass->getDeck();
+        $deck = $deckClass->deck;
         $data = [
             "list1" => $deckClass->toList($deck),
         ];
@@ -34,7 +34,7 @@ class CardsController extends AbstractController
     {
         $deckClass = new Deck();
         $session->set('deck', $deckClass);
-        $deck = $deckClass->getDeck();
+        $deck = $deckClass->deck;
         $toList = $deckClass->toList($deck);
         shuffle($toList);
         $data = [
