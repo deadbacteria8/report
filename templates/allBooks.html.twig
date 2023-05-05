@@ -1,0 +1,32 @@
+{% extends "library.html.twig" %}
+{% block div %}
+    <div>
+      <table class="bookTable">
+      <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>ISBN</th>
+      <th>IMG</th>
+      <th>Details</th>
+      <th>Update</th>
+      <th>Delete</th>
+      </tr>
+      {% for book in books %}
+      <tr>
+        <td>{{ book.title }}</td>
+        <td>Author: {{ book.author }}</td>
+        <td>{{ book.ISBN }}</td>
+        <td><img src="{{ book.image }}" width=100rem alt="{{ book.title }} cover"></td>
+        <td><a href="{{ path('book_by_id', {'bookId': book.id}) }}">Details</a></td>
+        <td><a href="{{ path('updateBook', {'bookId': book.id}) }}">Update</a></td>
+        <td>
+        <form method="POST" action="{{ path('allBooksPost') }}">
+        <input type="hidden" name="id" value="{{ book.id }}">
+        <input type="submit" value="Delete">
+        </form>
+        </td>
+        </tr>
+      {% endfor %}
+        </table>
+    </div>  
+{% endblock %}

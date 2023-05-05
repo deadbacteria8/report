@@ -1,0 +1,19 @@
+{% extends "library.html.twig" %}
+{% block div %}
+    <div>
+      <table class="bookTable">
+      <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>ISBN</th>
+      <th>IMG</th>
+      </tr>
+      <tr>
+        <td>{{ book.title }}</td>
+        <td>Author: {{ book.author }}</td>
+        <td>{{ book.ISBN }}</td>
+        <td><img src="{{ book.image }}" width=100rem alt="{{ book.title }} cover"></td>
+        </tr>
+        </table>
+    </div>  
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <div class="box2">
+          <a href="{{ path('allBooks') }}">All Books</a>
+          <a href="{{ path('createBook') }}">Create Book</a>
+        {% block div %}{% endblock %}
+        </div>
+{% endblock %}

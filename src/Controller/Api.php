@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Cards\Game;
 use App\Cards\Deck;
+use App\Entity\Book;
+use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\BookRepository;
 
 class Api extends AbstractController
 {
@@ -132,5 +135,24 @@ class Api extends AbstractController
             return new JsonResponse($data);
         }
         return $this->redirectToRoute('apidraw2', ['num' => $num]);
+    }
+
+    #[Route('api/library/book/{isbn}', name: 'bookByIsbn')]
+    public function showBookById(string $isbn, ManagerRegistry $doctrine): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $book = $entityManager->getRepository(Book::class)->findOneBy(['ISBN' => $isbn]);
+        if($book) {
+            return $this->json($book);
+        }
+        return $this->json([
+            'error' => 'Book not found'
+        ], 404);
+    }
+
+    #[Route('api/library/books', name: 'booksApi')]
+    public function showBooks(BookRepository $booksRepository): Response
+    {
+        return $this->json($booksRepository->findAll());
     }
 }
