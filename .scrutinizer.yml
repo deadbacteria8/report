@@ -3,6 +3,7 @@ imports:
 
 filter:
     excluded_paths: [vendor/*, test/*]
+    included_paths: [src/*]
 
 build:
     image: default-bionic
