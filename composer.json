@@ -102,6 +102,7 @@
         "phpstan": "tools/phpstan/vendor/bin/phpstan || true",
         "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
         "phpdoc": "tools/phpdoc/phpdoc",
+        "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json",
         "lint": [
             "@phpmd",
             "@phpstan"
