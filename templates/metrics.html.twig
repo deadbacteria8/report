@@ -8,5 +8,11 @@
 <p>Coverages ges i procent och talar om hur mycket av koden som är testad. En hög coverage brukar tyda på bra kvalitet på koden.</p>
 <h3>Complexity</h3>
 <p>Komplexiteten mäter hur svår koden är att förstå och hur svår koden är att upprätthålla/fortsätta utveckla med. Det kan självklart vara bra att ha lite komplexitet men om det blir för mycket så blir det svårt att fortsätta utveckla koden.</p>
+<h3>Cohesion</h3>
+<p>Cohesion är ett värde som beskriver hur bra klasser hänger ihop. Ett högt värde betyder att metoderna i klassen inte hänger ihop så bra. Om man kollar på min Queue-klass så kan man se att den har ett högre värde eftersom klassens metoder endast används i Game-klassen vilket tyder på att jag lika gärna skulle kunna flytta dess metoder till game-klassen istället.
+<h3>Coupling</h3>
+<p>Coupling talar om hur mycket en klass används av andra klasser(EC) eller hur många andra klasser som klassen använder sig av(AC). Min game-klass är till exempel bereonde av 3 andra klasser vilket ökar dens AC värde.</p>
+<h3>Crap</h3>
+<p>CRAPs värde är beräknat på metodens komplexitet och testbarhet. För att minska sin CRAP-score så kan man t.ex. göra fler tester som täcker dem olika utfallen i metoden det gäller. </p>
 </div>
 {% endblock %}
