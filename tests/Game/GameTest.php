@@ -63,6 +63,7 @@ class GameTest extends TestCase
 
     public function testGameEnd() : void {
         $game = new Game(1);
+        $game->start();
         $game->bankPlayer->points = 16;
         $game->makeAction(1,"Stay");
         $this->assertGreaterThan(2, count($game->bankPlayer->cards));
