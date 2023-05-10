@@ -11,8 +11,17 @@
 <h3>Cohesion</h3>
 <p>Cohesion är ett värde som beskriver hur bra klasser hänger ihop. Ett högt värde betyder att metoderna i klassen inte hänger ihop så bra. Om man kollar på min Queue-klass så kan man se att den har ett högre värde eftersom klassens metoder endast används i Game-klassen vilket tyder på att jag lika gärna skulle kunna flytta dess metoder till game-klassen istället.
 <h3>Coupling</h3>
-<p>Coupling talar om hur mycket en klass används av andra klasser(EC) eller hur många andra klasser som klassen använder sig av(AC). Min game-klass är till exempel bereonde av 3 andra klasser vilket ökar dens AC värde.</p>
+<p>Coupling talar om hur många andra klasser en klass använder sig av(EC) eller hur många andra klasser använder sig av klassen(AC). Min game-klass är till exempel bereonde av 3 andra klasser vilket ökar dens AC värde.</p>
 <h3>Crap</h3>
 <p>CRAPs värde är beräknat på metodens komplexitet och testbarhet. För att minska sin CRAP-score så kan man t.ex. göra fler tester som täcker dem olika utfallen i metoden det gäller. </p>
+<h1>Phpmetrics</h1>
+<p>Det första jag kan se är att jag har ett 2 violations för mina klasser. En violation gäller min Game-klass. Violationen är 'Probably bugged' vilket tyder på att klassen kan vara för stor, ha för långa metoder, beroende av flera andra klasser eller att komplexiteten är för hög.</p>
+<img src="https://i.gyazo.com/fe5b8d92c4d31ce9524cc3012f82f5a0.png" width=500px>
+<h3>Jag tar fram några svagheter från min game-klass</h3>
+<p>Klassen har en för hög komplexitet. Komplexitets-rapporten för min game-klass tyder på att komplexiteten är för hög. Anledningen till detta kan vara för att flera metoder är långa, t.ex. min result metod. Ett fix skulle vara att korta ner metoderna och dela in dem i mindre metoder. Bild på result metoden:</p>
+<img src="https://i.gyazo.com/8a8cf3b8eb3d5829d0115dfcde044e7c.png" width=500px>
+<p>Klassen har 3 i afferent coupling eftersom den använder sig av queue klassen, deck klassen och players klassen. Det är egentligen inte ett så högt värde men det går fortfarande att justera. Eftersom queue klassens metoder endast är avsedda för gameklassen så behöver det egentligen inte vara en helt egen klass. Man skulle kunna flytta metoderna från queue klassen till game-klassen istället.</p>
+<h3>Utöver min game-klass</h3>
+<p>Min api kontroller har en violation-error eftersom den innehåller för många publika metoder. Metoderna måste vara publika för att dem ska kunna användas på sidan. Däremot så hade man kunnat dela upp Api-kontrollern i flera olika api-kontroller för att slippa detta problem.</p>
 </div>
 {% endblock %}
