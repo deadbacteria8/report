@@ -68,4 +68,44 @@ class GameTest extends TestCase
         $game->makeAction(1,"Stay");
         $this->assertGreaterThan(2, count($game->bankPlayer->cards));
     }
+
+    public function testPlayer21() : void {
+        $game = new Game(1);
+        $game->start();
+        $game->bet(1,1000);
+        $game->bankPlayer->points = 17;
+        $game->players[1]->points = 21;
+        $game->makeAction(1, "Stay");
+        $this->assertEquals($game->players[1]->balance,1000*2.5);
+    }
+
+    public function testPlayerNormalWin() : void {
+        $game = new Game(1);
+        $game->start();
+        $game->bet(1,1000);
+        $game->bankPlayer->points = 17;
+        $game->players[1]->points = 20;
+        $game->makeAction(1, "Stay");
+        $this->assertEquals($game->players[1]->balance,1000*2);
+    }
+
+    public function testPlayerTie() : void {
+        $game = new Game(1);
+        $game->start();
+        $game->bet(1,1000);
+        $game->bankPlayer->points = 20;
+        $game->players[1]->points = 20;
+        $game->makeAction(1, "Stay");
+        $this->assertEquals($game->players[1]->balance,1000);
+    }
+
+    public function testPlayerLose() : void {
+        $game = new Game(1);
+        $game->start();
+        $game->bet(1,1000);
+        $game->bankPlayer->points = 21;
+        $game->players[1]->points = 20;
+        $game->makeAction(1, "Stay");
+        $this->assertEquals($game->players[1]->balance,0);
+    }
 }
