@@ -36,5 +36,9 @@
 <img src="https://i.gyazo.com/d7f59990528740c7601f2c52c268364c.png" width=200px>
 <p>Efter förbättringarna</p>
 <img src="https://i.gyazo.com/dc02d1a7cf4df50ebace2514fa57e4e5.png" width=500px>
+<img src="https://i.gyazo.com/d6c6656e5912e9469aafec1efbbb6996.png" width=200px>
+<p>Man kan se i phpmetrics att den generella komplexiteten gick ner vilket är bra. Anledningen till det är troligtvis för att jag täckt upp med nya tester som täcker upp mer kod. Det kan vi också se i Scrutinizer, att min code-coverage har höjts. Crap-scoren för min result-metod minskades också vilket jag förväntade mig. Däremot så minskade Scrutinizers kvalitetsindex med 0.01 vilket är konstigt. Mina issues i Scrutinizer, som jag fixade, finns inte längre kvar.Average-bug per class gick ner med 0.01 i phpmetrics, troligtvis för att jag bara gjorde en liten bugfix i förbättring nummer 3.</p>
+<h1>Diskussion</h1>
+<p>I kombination av andra hjälpmedel så kan man definitivt utgå från phpmetrics och scrutinizers rapporter för att skriva bättre och renare kod. Däremot så tror jag det är viktigt att först använda sig av olika linters eller valideringsverktyg innan man kollar på rapporterna. Jag tror att det kan bli väldigt rörigt om man inte gör det. Dessa rapporter som vi arbetat med kan vägleda en och göra så att man får en bättre översikt på hur det hela ser ut. Om man använder det på rätt sett så ser jag rapporterna som en fördel. Men man bör inte stirra sig blind på rapporterna heller. Rapporterna kan ses som indikationer i vilken riktning man går mot. Om hela rapporten är röd och full av höga värden så är det nog en indikation på att kvaliteten på koden inte är super bra. Något som är till en stor fördel är att man kan se issues, potentiella buggar,coupling värden, cohesion värde och komplexitets-värden. Något som jag inte kunnat se med dem andra verktyg vi har jobbat med.</p>
 </div>
 {% endblock %}

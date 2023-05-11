@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1683807721">
-  <project timestamp="1683807721">
+<coverage generated="1683810942">
+  <project timestamp="1683810942">
     <file name="/Users/deadbacteria8/dbwebb-kurser/mvc/me/report/src/Cards/Card.php">
       <class name="App\Cards\Card" namespace="global">
         <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="10" coveredelements="10"/>
@@ -53,7 +53,7 @@
     </file>
     <file name="/Users/deadbacteria8/dbwebb-kurser/mvc/me/report/src/Cards/Game.php">
       <class name="App\Cards\Game" namespace="global">
-        <metrics complexity="42" methods="13" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="103" coveredstatements="98" elements="116" coveredelements="109"/>
+        <metrics complexity="42" methods="13" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="103" coveredstatements="101" elements="116" coveredelements="113"/>
       </class>
       <line num="27" type="method" name="__construct" visibility="public" complexity="3" crap="3" count="14"/>
       <line num="29" type="stmt" count="14"/>
@@ -88,16 +88,16 @@
       <line num="82" type="stmt" count="5"/>
       <line num="83" type="stmt" count="5"/>
       <line num="84" type="stmt" count="5"/>
-      <line num="92" type="method" name="draw" visibility="private" complexity="5" crap="5.93" count="7"/>
+      <line num="92" type="method" name="draw" visibility="private" complexity="5" crap="5" count="7"/>
       <line num="94" type="stmt" count="7"/>
       <line num="95" type="stmt" count="7"/>
       <line num="96" type="stmt" count="7"/>
       <line num="97" type="stmt" count="7"/>
       <line num="99" type="stmt" count="7"/>
       <line num="100" type="stmt" count="7"/>
-      <line num="101" type="stmt" count="0"/>
-      <line num="102" type="stmt" count="0"/>
-      <line num="103" type="stmt" count="0"/>
+      <line num="101" type="stmt" count="1"/>
+      <line num="102" type="stmt" count="1"/>
+      <line num="103" type="stmt" count="1"/>
       <line num="111" type="method" name="newDeck" visibility="private" complexity="2" crap="3.19" count="7"/>
       <line num="113" type="stmt" count="7"/>
       <line num="114" type="stmt" count="0"/>
@@ -119,12 +119,12 @@
       <line num="147" type="stmt" count="1"/>
       <line num="148" type="stmt" count="1"/>
       <line num="151" type="stmt" count="2"/>
-      <line num="157" type="method" name="gameEnd" visibility="private" complexity="4" crap="4" count="6"/>
-      <line num="159" type="stmt" count="6"/>
-      <line num="160" type="stmt" count="6"/>
-      <line num="161" type="stmt" count="6"/>
+      <line num="157" type="method" name="gameEnd" visibility="private" complexity="4" crap="4" count="7"/>
+      <line num="159" type="stmt" count="7"/>
+      <line num="160" type="stmt" count="7"/>
+      <line num="161" type="stmt" count="7"/>
       <line num="162" type="stmt" count="5"/>
-      <line num="164" type="stmt" count="6"/>
+      <line num="164" type="stmt" count="7"/>
       <line num="165" type="stmt" count="5"/>
       <line num="166" type="stmt" count="1"/>
       <line num="168" type="stmt" count="5"/>
@@ -164,14 +164,14 @@
       <line num="230" type="stmt" count="7"/>
       <line num="231" type="stmt" count="7"/>
       <line num="232" type="stmt" count="7"/>
-      <line num="233" type="stmt" count="1"/>
+      <line num="233" type="stmt" count="2"/>
       <line num="237" type="stmt" count="8"/>
-      <line num="238" type="stmt" count="1"/>
+      <line num="238" type="stmt" count="2"/>
       <line num="241" type="stmt" count="8"/>
       <line num="248" type="method" name="addPoints" visibility="public" complexity="1" crap="1" count="7"/>
       <line num="250" type="stmt" count="7"/>
       <line num="251" type="stmt" count="7"/>
-      <metrics loc="254" ncloc="199" classes="1" methods="13" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="103" coveredstatements="98" elements="116" coveredelements="109"/>
+      <metrics loc="254" ncloc="199" classes="1" methods="13" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="103" coveredstatements="101" elements="116" coveredelements="113"/>
     </file>
     <file name="/Users/deadbacteria8/dbwebb-kurser/mvc/me/report/src/Cards/Players.php">
       <class name="App\Cards\Players" namespace="global">
@@ -192,19 +192,19 @@
       <class name="App\Cards\Queue" namespace="global">
         <metrics complexity="8" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="20" coveredelements="20"/>
       </class>
-      <line num="10" type="method" name="changeQueuePositions" visibility="public" complexity="4" crap="4" count="7"/>
-      <line num="12" type="stmt" count="7"/>
-      <line num="13" type="stmt" count="7"/>
-      <line num="14" type="stmt" count="7"/>
-      <line num="15" type="stmt" count="7"/>
-      <line num="16" type="stmt" count="7"/>
-      <line num="17" type="stmt" count="7"/>
-      <line num="18" type="stmt" count="2"/>
-      <line num="26" type="method" name="getQueue" visibility="public" complexity="2" crap="2" count="7"/>
-      <line num="28" type="stmt" count="7"/>
-      <line num="29" type="stmt" count="7"/>
-      <line num="30" type="stmt" count="7"/>
-      <line num="32" type="stmt" count="7"/>
+      <line num="10" type="method" name="changeQueuePositions" visibility="public" complexity="4" crap="4" count="8"/>
+      <line num="12" type="stmt" count="8"/>
+      <line num="13" type="stmt" count="8"/>
+      <line num="14" type="stmt" count="8"/>
+      <line num="15" type="stmt" count="8"/>
+      <line num="16" type="stmt" count="8"/>
+      <line num="17" type="stmt" count="8"/>
+      <line num="18" type="stmt" count="3"/>
+      <line num="26" type="method" name="getQueue" visibility="public" complexity="2" crap="2" count="8"/>
+      <line num="28" type="stmt" count="8"/>
+      <line num="29" type="stmt" count="8"/>
+      <line num="30" type="stmt" count="8"/>
+      <line num="32" type="stmt" count="8"/>
       <line num="38" type="method" name="createQueue" visibility="public" complexity="2" crap="2" count="8"/>
       <line num="40" type="stmt" count="8"/>
       <line num="41" type="stmt" count="8"/>
@@ -572,6 +572,6 @@
       <line num="38" type="stmt" count="0"/>
       <metrics loc="67" ncloc="36" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
     </file>
-    <metrics files="16" loc="1145" ncloc="1027" classes="15" methods="75" coveredmethods="23" conditionals="0" coveredconditionals="0" statements="400" coveredstatements="153" elements="475" coveredelements="176"/>
+    <metrics files="16" loc="1145" ncloc="1027" classes="15" methods="75" coveredmethods="24" conditionals="0" coveredconditionals="0" statements="400" coveredstatements="156" elements="475" coveredelements="180"/>
   </project>
 </coverage>

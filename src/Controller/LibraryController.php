@@ -67,7 +67,7 @@ class LibraryController extends AbstractController
 
 
     #[Route('/book/show/{bookId}', name: 'book_by_id', methods: ['GET'])]
-    public function showBookById(int $bookId,BookRepository $booksRepository): Response
+    public function showBookById(int $bookId, BookRepository $booksRepository): Response
     {
         $data = [
             "book" => $booksRepository->find($bookId)
@@ -76,7 +76,7 @@ class LibraryController extends AbstractController
     }
 
     #[Route('/book/update/{bookId}', name: 'updateBook', methods: ['GET'])]
-    public function updateBook(int $bookId,BookRepository $booksRepository): Response
+    public function updateBook(int $bookId, BookRepository $booksRepository): Response
     {
         $book = $booksRepository->find($bookId);
         if (!$book) {
@@ -89,7 +89,7 @@ class LibraryController extends AbstractController
     }
 
     #[Route('/book/update/{bookId}', name: 'updateBookPost', methods: ['POST'])]
-    public function updateBookPost(int $bookId,Request $request, ManagerRegistry $doctrine): Response
+    public function updateBookPost(int $bookId, Request $request, ManagerRegistry $doctrine): Response
     {
         $entityManager = $doctrine->getManager();
         $book = $entityManager->getRepository(Book::class)->find($bookId);
