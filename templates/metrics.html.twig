@@ -23,5 +23,15 @@
 <p>Klassen har 3 i afferent coupling eftersom den använder sig av queue klassen, deck klassen och players klassen. Det är egentligen inte ett så högt värde men det går fortfarande att justera. Eftersom queue klassens metoder endast är avsedda för gameklassen så behöver det egentligen inte vara en helt egen klass. Man skulle kunna flytta metoderna från queue klassen till game-klassen istället.</p>
 <h3>Utöver min game-klass</h3>
 <p>Min api kontroller har en violation-error eftersom den innehåller för många publika metoder. Metoderna måste vara publika för att dem ska kunna användas på sidan. Däremot så hade man kunnat dela upp Api-kontrollern i flera olika api-kontroller för att slippa detta problem.</p>
+<h1>Scrutinizer</h1>
+<p>I scrutinizer så ser jag att jag har ett scrutinizer-betyg på 9.9 vilket känns bra. Däremot är min code-coverage inte så hög eftersom jag inte har några tester till mina kontroller-klasser. Dessutom är min code-coverage inte så hög i min game klass eftersom jag var tvungen att ta bort ett test som inte fungerat helt. Jag kan åtgärda det sen för att höja min coverage och slippa någon hög crap-score. Jag hittar också några issues i Scrutinizer. Ett av dem är att jag använder == när jag jämför booleans när jag egentligen ska använda ===. Detta är ett Codestyle fel som man kan fixa lätt. Jag kollar in min CRAP score och complexity för min result metod i gameklassen. CRAP score grundar sig i komplexiteten av koden och därför så har jag en sämre score för både min CRAP score och complexity. Man kan förbättra detta genom att göra fler tester som täcker mer rader i result metoden.</p>
+<h1>Förbättringar som ska göras.</h1>
+<p>1.Gör ett nytt test för gameEnd metoden i game-klassen för att jag vill ha bättre code-coverage i min game-klass. Det tidigare testet fungerade inte eftersom start metoden inte initierades.</p>
+<p>2.Jämföra booleans med === och inte == för att förbättra min code-style. Förhoppningsvis blir kvalitetsindexen i Scrutinizer högre.</p>
+<p>3. Sedan så ska jag fixa en issue för min pullCard i min deck klass för att scrutinizer varnar för att det kan uppkomma en bugg. Detta kan göra så att koden får färre potentiella buggar och förhoppningsvis ökad kvalitetsindex i Scrutinizer.</p>
+<p>4. Fixa issue med docblock kommentar där variabeln är deklarerad som @playerAmount och inte $playerAmount. Det är en lätt fix att göra och jag vet inte om detta kommer få någon större påverkan på min score från scrutinizer eller phpmetrics. Möjligtvist bättre kvalitetsindex i Scrutinizer.</p>
+<p>En overview på rapporterna innan</p>
+<img src="https://i.gyazo.com/e9808e4a947341bbb1925539c71d7732.png" width=500px>
+<img src="https://i.gyazo.com/d7f59990528740c7601f2c52c268364c.png" width=200px>
 </div>
 {% endblock %}

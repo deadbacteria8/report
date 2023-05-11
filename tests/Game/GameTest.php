@@ -60,4 +60,12 @@ class GameTest extends TestCase
         $toList = $game->toList($game->players[1]->cards);
         $this->assertEquals(["A♦"],$toList);
     }
+
+    public function testGameEnd() : void {
+        $game = new Game(1);
+        $game->start();
+        $game->bankPlayer->points = 16;
+        $game->makeAction(1,"Stay");
+        $this->assertGreaterThan(2, count($game->bankPlayer->cards));
+    }
 }

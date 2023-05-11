@@ -21,7 +21,7 @@ class Game
 
 
     /**
-     * @param int @playerAmount
+     * @param int $playerAmount
      * Creates gameclass with Players instances.
      */
     public function __construct(int $playerAmount)
@@ -47,7 +47,7 @@ class Game
      */
     public function start(): void
     {
-        if ($this->gamePlaying == false) {
+        if ($this->gamePlaying === false) {
             $amount = count($this->players);
             $this->queue->createQueue($this->players);
             $this->gamePlaying = true;
@@ -158,10 +158,10 @@ class Game
     {
         $queue = $this->queue->getQueue($this->players);
         $boolStrVariables = array_column($queue, 0);
-        if (in_array(false, $boolStrVariables) == false) {
+        if (in_array(false, $boolStrVariables) === false) {
             $this->playersDone = true;
         }
-        if ($this->playersDone == true) {
+        if ($this->playersDone === true) {
             while($this->bankPlayer->points < 17) {
                 $this->draw($this->bankPlayer, 1);
             }

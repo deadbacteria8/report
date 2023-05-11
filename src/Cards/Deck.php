@@ -48,7 +48,7 @@ class Deck
     {
         $deck = $this->deck;
         $rand = array_rand($deck, $num);
-        if ($num == 1) {
+        if (!is_array($rand)) {
             $rand = [$rand];
         }
         $returnArray = [];
