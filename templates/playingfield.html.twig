@@ -9,7 +9,7 @@
 {% for i in range(0, spelare|length - 1) %}
   <div class="player">
   <form method="POST" action="{{ path('playingfield_post') }}">
-  <input type="hidden" name="player" value="{{ spelare[i]["player-number"] }}">
+  <input type="hidden" name="player" value="{{ i }}">
   <input type="number" class="bet" name="value" min="1" max="{{ spelare[i]["Money"] }}">
   <button type="submit">Bet</button>
   </form>

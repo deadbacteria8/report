@@ -1,0 +1,17 @@
+
+footer {
+    border-top: 3px solid black;
+    background-color: black;
+    bottom: 0;
+    margin: 0;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    img {
+        filter: invert(100%);
+        height: 2rem;
+        float: left;
+        padding-left: 2rem;
+    }
+}

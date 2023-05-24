@@ -1,0 +1,77 @@
+
+.playcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playfield {
+    width: 90%;
+    background-color: green;
+    height: 35rem;
+    padding: 1rem;
+    position: relative;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    border: 3px solid #FFD700;
+}
+
+.players {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.player {
+    background-color: black;
+    color: white;
+    margin: 1rem;
+    justify-content: center;
+    padding: 1rem;
+    border: 1px solid #FFD700;
+    border-radius: 0.2rem;
+    width: 7rem;
+    opacity: 1;
+    position: relative;
+}
+
+.bank {
+    margin: 0;
+}
+
+.bet {
+    max-width: 4rem;
+}
+
+.card {
+    color: black;
+}
+
+.balanceDiv {
+    height: 5rem;
+    width: 14rem;
+    text-align: center;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    h1 {
+        text-align: center;
+    }
+}
+
+.imgBackground {
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://t3.ftcdn.net/jpg/04/48/49/68/360_F_448496861_aLVW4sWDw543xGQYvllcbCsYrbTVUdfA.jpg');
+    background-size: cover;
+}

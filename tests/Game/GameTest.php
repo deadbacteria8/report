@@ -10,7 +10,7 @@ class GameTest extends TestCase
     public function testCreateObjectWithOnePlayer() : void {
     $game = new Game(1);
     $this->assertInstanceOf("\App\Cards\Game", $game);
-    $this->assertInstanceOf("\App\Cards\Players",$game->players[1]);
+    $this->assertInstanceOf("\App\Cards\Players",$game->players[0]);
     }
 
     public function testStartingGame() : void {
@@ -18,31 +18,31 @@ class GameTest extends TestCase
         $game->start();
         $playerArray = $game->players;
         $count = count($playerArray);
-        for($i = 1; $i <= $count; $i++) {
+        for($i = 0; $i < $count; $i++) {
             $this->assertEquals(2,count($playerArray[$i]->cards));
         }
     }
 
     public function testBet() : void {
         $game = new Game(1);
-        $this->assertEquals(1000, $game->players[1]->balance);
-        $game->bet(1,800);
-        $this->assertEquals(200, $game->players[1]->balance);
-        $this->assertEquals(800, $game->players[1]->currentBet);
+        $this->assertEquals(1000, $game->players[0]->balance);
+        $game->bet(0,800);
+        $this->assertEquals(200, $game->players[0]->balance);
+        $this->assertEquals(800, $game->players[0]->currentBet);
     }
 
     public function testMakeAction() : void {
         $game = new Game(5);
-        $game->makeAction(1, "PullCard");
-        $this->assertEquals(1, count($game->players[1]->cards));
-        $this->assertFalse($game->players[1]->havePlayed);
-        $game->makeAction(1, "Stay");
-        $this->assertTrue($game->players[1]->havePlayed);
+        $game->makeAction(0, "PullCard");
+        $this->assertEquals(1, count($game->players[0]->cards));
+        $this->assertFalse($game->players[0]->havePlayed);
+        $game->makeAction(0, "Stay");
+        $this->assertTrue($game->players[0]->havePlayed);
     }
 
     public function testAllPlayers() : void {
         $game = new Game(1);
-        $playerOne = $game->players[1];
+        $playerOne = $game->players[0];
         $allPlayersArray = $game->allPlayers();
         $playerOneArray = $allPlayersArray[0];
         $this->assertEquals($playerOne->playerNumber, $playerOneArray["player-number"]);
@@ -56,8 +56,8 @@ class GameTest extends TestCase
     public function testToList() : void {
         $game = new Game(1);
         $card = new Card([1,11],"♦","A");
-        $game->players[1]->cards[] = [$card];
-        $toList = $game->toList($game->players[1]->cards);
+        $game->players[0]->cards[] = [$card];
+        $toList = $game->toList($game->players[0]->cards);
         $this->assertEquals(["A♦"],$toList);
     }
 
@@ -65,47 +65,47 @@ class GameTest extends TestCase
         $game = new Game(1);
         $game->start();
         $game->bankPlayer->points = 16;
-        $game->makeAction(1,"Stay");
+        $game->makeAction(0,"Stay");
         $this->assertGreaterThan(2, count($game->bankPlayer->cards));
     }
 
     public function testPlayer21() : void {
         $game = new Game(1);
         $game->start();
-        $game->bet(1,1000);
+        $game->bet(0,1000);
         $game->bankPlayer->points = 17;
-        $game->players[1]->points = 21;
-        $game->makeAction(1, "Stay");
-        $this->assertEquals($game->players[1]->balance,1000*2.5);
+        $game->players[0]->points = 21;
+        $game->makeAction(0, "Stay");
+        $this->assertEquals($game->players[0]->balance,1000*2.5);
     }
 
     public function testPlayerNormalWin() : void {
         $game = new Game(1);
         $game->start();
-        $game->bet(1,1000);
+        $game->bet(0,1000);
         $game->bankPlayer->points = 17;
-        $game->players[1]->points = 20;
-        $game->makeAction(1, "Stay");
-        $this->assertEquals($game->players[1]->balance,1000*2);
+        $game->players[0]->points = 20;
+        $game->makeAction(0, "Stay");
+        $this->assertEquals($game->players[0]->balance,1000*2);
     }
 
     public function testPlayerTie() : void {
         $game = new Game(1);
         $game->start();
-        $game->bet(1,1000);
+        $game->bet(0,1000);
         $game->bankPlayer->points = 20;
-        $game->players[1]->points = 20;
-        $game->makeAction(1, "Stay");
-        $this->assertEquals($game->players[1]->balance,1000);
+        $game->players[0]->points = 20;
+        $game->makeAction(0, "Stay");
+        $this->assertEquals($game->players[0]->balance,1000);
     }
 
     public function testPlayerLose() : void {
         $game = new Game(1);
         $game->start();
-        $game->bet(1,1000);
+        $game->bet(0,1000);
         $game->bankPlayer->points = 21;
-        $game->players[1]->points = 20;
-        $game->makeAction(1, "Stay");
-        $this->assertEquals($game->players[1]->balance,0);
+        $game->players[0]->points = 20;
+        $game->makeAction(0, "Stay");
+        $this->assertEquals($game->players[0]->balance,0);
     }
 }

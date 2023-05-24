@@ -7,7 +7,7 @@
     <a href="#kmom04">kmom04</a>
     <a href="#kmom05">kmom05</a>
     <a href="#kmom06">kmom06</a>
-    <a href="#kmom07">kmom07</a>
+    <a href="#kmom10">kmom10</a>
     <h2 id="kmom01">kmom01</h2>
     <p>Jag känner att jag har koll på objektorientering från tidigare kurser. Jag känner mig säker i hur jag skapar klasser och tildelar dem attribut och metoder. Känner mig också säker i att skapa instanser av objekt och subklasser till andra klasser. Detta och en del mer. Objektorientering i php känns rätt så likt objekt orienteringen i python. Man kan ha attribut och metoder i en klass på samma sett. Man kan också skapa en instans av ett objekt på ungefär samma sett. Förutom att man behöver skriva 'new'. Jag tror att jag kan stå mig på mina kunskaper från oopython kursen för att skapa klasser. Däremot så behöver jag nog vänja mig med phps syntax. Det finns mycket att reflektera kring koden för detta kmom eftersom allt är nytt. Det som jag kikat mest på är dem olika kontrollerna. Dem olika kontrollerna är klasser som använder sig av routes. I klasserna så hittar vi funktioner/metoder som returnerar data och information. Man kan till exempel returnera data som går att ta fram i en twig fil, om man då också returnerar en render. Render är en metod av AbstractController klassen som man kan importera. Om man t.e.x ska kunna skicka data till en twig fil så behöver man skapa en subklass av AbstractController klassen eftersom den innehåller render metoden. Något som jag fick lära mig i php right the way var att php har magiska metoder. Jag läste också mer om namespacing. Jag undrar varför man skulle vilja kunna ha fler klasser med samma namn. Vad händer då när man ska göra en instans av en klass som finns på flera ställen? Mitt TIL för detta kmom är att jobba med symfony</p>
     <hr>
@@ -66,8 +66,15 @@
     <h3>TIL</h3>
     <p>Jag har lärt mig om att jobba med phpmetrics,scrutinizer och vad deras rapport-värden innebär.</p>
     <hr>
-    <h2 id="kmom07">kmom07</h2>
-    <p></p>
+    <h2 id="kmom10">kmom10</h2>
+    <h3>Krav 1-3</h3>
+    <p>Jag började projektet med att använda ett nytt namespace för strukturens skull. Jag valde att göra ett BlackJack spel vilket jag också gjorde i kmom03. Skillnaden mellan kmom03 och projektet är att jag har utvecklat,ändrat och lagt till kod/klasser. Jag har valt att återanvända  Klasserna Card,Deck och Queue. Min BlackJack klass är däremot väldigt lik min Game klass. Det finns några ändringar och förbättringar i min BlackJack klass. Jag har t.e.x. tagit bort funktioner som inte behövs. Dessutom så behövde jag ändra lite på koden så att den fungerar nu när jag har lagt till en Hand klass och en ny Player klass. Den stora skillnaden mellan min Game-klass från kmom03 och min BlackJack klass för projektet är att koden är snyggare och att en spelare kan ha 3 händer istället för att man kan spela med 5 spelare. För min BlackJack klass till projektet så kan man fortfarande betta. Man kan lägga olika bett på sina händer som man spelar med. Inför varje runda så kan man ändra antal händer man vill spela med.Min style för projektet är förändrad till ett 'spel-tema'. Jag tycker det ser godtyckligt ut. Min kodtäckning ser bra ut för mina klasser. Kodtäckningen ligger på ungefär 95%. I min coverage rapport så exkluderar jag mina kontroller-filer eftersom jag inte gjort tester på dem. Därför så tycker jag inte dem är relevanta att ha med.</p>
+    <h3>Skriv ett allmänt stycke om hur projektet gick att genomföra.</h3>
+    <p>Det gick bra att genomföra projektet. Det var inga konstigheter. Eftersom jag, under kmom03, utmanade mig själv med att göra ett blackjack-spel likt det som jag gjorde nu så krävdes det inte så mycket extra jobb. Det var bara några små saker som behövde korrigeras och ändras på. Projektet sammanfattar ändå kursen bra. Jag tycker om att det fanns flera olika val på hur man kunde göra projektet.</p>
+    <h3>Tankar om kursen</h3>
+    <p>Jag tycker att kursen har flytit på bra. Instruktioner för övningar och uppgifter har varit klara och jag känner inte att jag har behövt fråga om så mycket. Jag är nöjd med kursen och jag tycker den sammanfattar mer eller mindre allt som vi har gjort under årets gång. Något som jag har tyckt varit konstigt är att när vi jobbat med post routes i json. Jag förstår inte vad som menas med det? Ska man skapa ett post formulär i html och sedan visa upp den nya datan i json? Isåfall så ser jag inte någon anledning till det. Sammanfattningsvis så var denna kurs en av dem bättre kurserna i år.</p>
+    <h3>Övrigt</h3>
+    <p>dbwebb test klagar på att jag inte har tillräckligt med commits. Jag har slarvat med att göra mindre och flera commits.</p>
     <hr>
     </div>
     {% endblock %}

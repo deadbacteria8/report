@@ -1,0 +1,33 @@
+
+@import 'footer';
+@import '../box';
+@import '../cards';
+@import 'game';
+@import 'nav';
+@import 'button';
+
+body {
+    background-color: #006400;
+    margin: 0;
+}
+
+.content {
+    position: relative;
+    min-height: 90vh;
+}
+
+h1 {
+    margin: 0;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sf-toolbar {
+    width: 0px;
+    height: 0px;
+}

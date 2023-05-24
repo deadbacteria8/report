@@ -36,7 +36,10 @@ class Game
             $playerArray[] = new Players($i, $maxMoney);
         }
         $this->bankPlayer = $playerArray[0];
-        unset($playerArray[0]);
+        if (isset($playerArray[0])) {
+            unset($playerArray[0]);
+            $playerArray = array_values($playerArray);
+        }
         $this->players = $playerArray;
         $this->queue = new Queue();
         $this->playersDone = false;
@@ -52,7 +55,7 @@ class Game
             $this->queue->createQueue($this->players);
             $this->gamePlaying = true;
             $this->playersDone = false;
-            for ($i = 1; $i <= $amount; $i++) {
+            for ($i = 0; $i < $amount; $i++) {
                 $this->resetValues($this->players[$i]);
                 $this->draw($this->players[$i], 2);
             }
@@ -177,7 +180,7 @@ class Game
     {
         $bankPoints = $this->bankPlayer->points;
         $amount = count($this->players);
-        for ($i = 1; $i <= $amount; $i++) {
+        for ($i = 0; $i < $amount; $i++) {
             $currentPlayer = $this->players[$i];
             $playerPoints = $currentPlayer->points;
             switch (true) {

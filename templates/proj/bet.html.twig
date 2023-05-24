@@ -1,0 +1,35 @@
+{% extends "proj/baseproj.html.twig" %}
+{% block body %}
+<div class="playcontainer">
+<div class="playfield">
+<div class="imgBackground"></div>
+<div class="balanceDiv"><h1 class="balance">Pengar: {{ spelare.balance }}</h1></div>
+<div class="center">
+<form method="POST" action="{{ path('betPost') }}">
+  <input class="BlackJackButton" type="submit" name="action" value="Start"></button>
+</form>
+</div>
+<div class="players">
+{% set handNum = spelare.hands|length %}
+{% for i in range(1, handNum) %}
+  <div class="player">
+  <form method="POST" action="{{ path('betPost') }}">
+  <input type="hidden" name="hand" value="{{ i - 1 }}">
+  <input type="number" class="bet" name="value" min="1" max="{{ spelare.balance }}">
+  <input type="submit" name="action" value="Bet"></button>
+  </form>
+  </div>
+{% endfor %}
+{% if 2 >= handNum %}
+{% for i in range(handNum, 2)%}
+  <div class="player">
+  <form method="POST" action="{{ path('betPost') }}">
+  <input type="submit" name="action" value="Add"></button>
+  </form>
+  </div>
+{% endfor %}
+{% endif %}
+</div>
+</div>
+</div>
+{% endblock %}

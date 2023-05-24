@@ -13,8 +13,8 @@ class QueueTest extends TestCase
         $count = count($game->players);
         $queue = new Queue();
         $queue->createQueue($game->players);
-        for($i = 1; $i <= $count; $i++) {
-            $this->assertEquals($game->players[$i]->queueSpot, $i);
+        for($i = 0; $i < $count; $i++) {
+            $this->assertEquals($game->players[$i]->queueSpot, $i+1);
         }
     }
 
@@ -22,9 +22,9 @@ class QueueTest extends TestCase
         $game = new Game(5);
         $count = count($game->players);
         $queue = new Queue();
-        $queue->changeQueuePositions($game->players[1],$game->players);
-        $this->assertTrue($game->players[1]->havePlayed);
-        $this->assertEquals($count,$game->players[1]->queueSpot);
+        $queue->changeQueuePositions($game->players[0],$game->players);
+        $this->assertTrue($game->players[0]->havePlayed);
+        $this->assertEquals($count,$game->players[0]->queueSpot);
     }
 
     public function testGetArray() : void {

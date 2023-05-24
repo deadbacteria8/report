@@ -1,0 +1,52 @@
+{% extends "proj/baseproj.html.twig" %}
+{% block body %}
+<div class="playcontainer">
+<div class="playfield">
+<div class="imgBackground"></div>
+  {% if game.bankPlayer.hands[0].havePlayed is same as(true) %}
+  <form method="POST" action="{{ path('blackJackPost') }}">
+   <input class="playAgain" type="submit" name="reset" value="Play Again">
+   </form>
+{% endif %}
+  {% set count = 1 %}
+  <div class="player">
+  <h3 class="bank">BANK</h3>
+  {% for cardArray in game.bankPlayer.hands[0].cards %}
+  {% for card in cardArray %}
+    <div class="card">
+    {% if count != 2 or game.playerDone is same as(true) %}
+      <p {% if card.getSuits() in ['♥', '♦'] %} class="red"{% endif %}>{{ card.getSuits() }} {{ card.getRanks() }}</p>
+      {% endif %}
+    </div>
+    {% set count = count + 1 %}
+  {% endfor %}
+  {% endfor %}
+   </div>
+<div class="players">
+{% set count = 0 %}
+{% for hand in game.player.hands %}
+  <div class="player">
+  <p>{{ game.getPointsArray(hand)[0] }}{% if game.getPointsArray(hand)[1] is defined %}/{{ game.getPointsArray(hand)[1] }}{% endif %}</p>
+  <p>{{ hand.message }} </p>
+  {% for cardArray in hand.cards %}
+  {% for card in cardArray %}
+    <div class="card">
+    <p {% if card.getSuits() in ['♥', '♦'] %} class="red"{% endif %}>{{ card.getSuits() }} {{ card.getRanks() }}</p>
+    </div>
+    {% endfor %}
+{% endfor %}
+{% if hand.queueSpot == 1 and game.playerDone is same as(false) %}
+<form method="POST" action="{{ path('blackJackPost') }}">
+  <input type="hidden" name="count" value="{{ count }}">
+  <input type="submit" name="value" value="PullCard">
+  <input type="submit" name="value" value="Stay">
+</form>
+{% endif %}
+</div>
+{% set count = count + 1 %}
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}
+

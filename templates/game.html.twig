@@ -32,7 +32,7 @@
 {% endfor %}
 {% if spelare[i]["Queue-Spot"] == 1 and playersDone is same as(false) %}
 <form method="POST" action="{{ path('gamePost') }}">
-  <input type="hidden" name="count" value="{{ i + 1 }}">
+  <input type="hidden" name="count" value="{{ i }}">
   <input type="submit" name="value" value="PullCard">
   <input type="submit" name="value" value="Stay">
 </form>

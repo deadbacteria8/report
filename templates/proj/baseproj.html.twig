@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/glider.svg') }}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('proj') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('proj') }}
+        {% endblock %}
+    </head>
+    <body>
+    <header>
+        <nav class="navbar">
+        <ul>
+        <li> <a href="{{ path('proj') }}">BlackJack</a></li>
+        <li> <a href="{{ path('projAbout') }}">About</a></li>
+        </ul>
+    </nav>
+</header>
+        <div class="content">
+        {% block body %}{% endblock %}
+        </div>
+        <footer><a href="https://github.com/deadbacteria8/report"><img src="{{ asset('img/github.png') }}" alt="" class="git"></a></footer>
+    </body>
+</html>
