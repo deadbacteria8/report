@@ -3,7 +3,8 @@
 <div class="playcontainer">
 <div class="playfield">
 <div class="imgBackground"></div>
-  {% if game.bankPlayer.hands[0].havePlayed is same as(true) %}
+{% set bankPlayed = game.bankPlayer.hands[0].havePlayed %}
+  {% if bankPlayed is same as (true) %}
   <form method="POST" action="{{ path('blackJackPost') }}">
    <input class="playAgain" type="submit" name="reset" value="Play Again">
    </form>
@@ -11,6 +12,9 @@
   {% set count = 1 %}
   <div class="player">
   <h3 class="bank">BANK</h3>
+  {% if game.bankPlayer.hands[0].havePlayed is same as (true) %}
+  <p>{{ game.bankPlayer.hands[0].points }}</p>
+  {% endif %}
   {% for cardArray in game.bankPlayer.hands[0].cards %}
   {% for card in cardArray %}
     <div class="card">
@@ -26,6 +30,10 @@
 {% set count = 0 %}
 {% for hand in game.player.hands %}
   <div class="player">
+  <p>Hand-number {{ count + 1 }}</p>
+  {% if bankPlayed is same as(false) %}
+  <p>Current-bet {{ game.player.hands[count].currentBet }}</p>
+  {% endif %}
   <p>{{ game.getPointsArray(hand)[0] }}{% if game.getPointsArray(hand)[1] is defined %}/{{ game.getPointsArray(hand)[1] }}{% endif %}</p>
   <p>{{ hand.message }} </p>
   {% for cardArray in hand.cards %}

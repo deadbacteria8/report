@@ -8,7 +8,6 @@ class Player
      * @var Hand[]
      */
     public array $hands;
-    public int $playerNumber;
     public int|float $balance;
     public BlackJack $owner;
 

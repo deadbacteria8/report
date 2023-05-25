@@ -736,11 +736,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Blackjack-Player.html#property_hands"
         },                {
-            "fqsen": "\\App\\Blackjack\\Player\u003A\u003A\u0024playerNumber",
-            "name": "playerNumber",
-            "summary": "",
-            "url": "classes/App-Blackjack-Player.html#property_playerNumber"
-        },                {
             "fqsen": "\\App\\Blackjack\\Player\u003A\u003A\u0024balance",
             "name": "balance",
             "summary": "",

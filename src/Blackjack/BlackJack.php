@@ -153,7 +153,6 @@ class BlackJack
                     $this->player->balance += $hand->currentBet*2;
                     break;
             }
-            $hand->currentBet = 0;
         }
     }
 

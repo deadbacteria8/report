@@ -21,13 +21,11 @@
   </div>
 {% endfor %}
 {% if 2 >= handNum %}
-{% for i in range(handNum, 2)%}
   <div class="player">
   <form method="POST" action="{{ path('betPost') }}">
   <input type="submit" name="action" value="Add"></button>
   </form>
   </div>
-{% endfor %}
 {% endif %}
 </div>
 </div>
