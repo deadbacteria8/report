@@ -49,7 +49,6 @@ class BlackJackTest extends TestCase
         $blackJack->player->addHand();
         $blackJack->bet($blackJack->player->hands[0],1000);
         $blackJack->bet($blackJack->player->hands[1],100);
-        $blackJack->start();
         $blackJack->bankPlayer->hands[0]->points = 17;
         $blackJack->player->hands[0]->points = 21;
         $blackJack->player->hands[1]->points = 16;
@@ -61,7 +60,6 @@ class BlackJackTest extends TestCase
     public function testPlayerNormalWin() : void {
         $blackJack = new BlackJack();
         $blackJack->bet($blackJack->player->hands[0],1000);
-        $blackJack->start();
         $blackJack->bankPlayer->hands[0]->points = 17;
         $blackJack->player->hands[0]->points = 20;
         $blackJack->makeAction($blackJack->player->hands[0], "Stay");
@@ -72,7 +70,6 @@ class BlackJackTest extends TestCase
     public function testPlayerTie() : void {
         $blackJack = new BlackJack();
         $blackJack->bet($blackJack->player->hands[0],1000);
-        $blackJack->start();
         $blackJack->bankPlayer->hands[0]->points = 20;
         $blackJack->player->hands[0]->points = 20;
         $blackJack->makeAction($blackJack->player->hands[0], "Stay");
@@ -82,7 +79,6 @@ class BlackJackTest extends TestCase
     public function testPlayerLose() : void {
         $blackJack = new BlackJack();
         $blackJack->bet($blackJack->player->hands[0],1000);
-        $blackJack->start();
         $blackJack->bankPlayer->hands[0]->points = 20;
         $blackJack->player->hands[0]->points = 19;
         $blackJack->makeAction($blackJack->player->hands[0], "Stay");

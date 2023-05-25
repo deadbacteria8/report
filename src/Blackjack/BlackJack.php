@@ -89,8 +89,8 @@ class BlackJack
         }
         $this->addPoints($hand);
         if ($hand->points >= 21 && $hand->owner !== $this->bankPlayer) {
-            $hand->message = ($hand->points == 21) ? "BlackJack" : "Busted";
             $this->queue->changeQueuePositions($hand, $this->player->hands);
+            $hand->message = ($hand->points == 21) ? "BlackJack" : "Busted";
             $this->gameEnd();
         }
     }
